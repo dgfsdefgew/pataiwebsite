@@ -103,11 +103,11 @@ const Services = () => {
   };
 
   return (
-    <section id="services" className="py-20 bg-black/90 backdrop-blur-sm relative">
+    <section id="services" className="py-20 bg-black/90 backdrop-blur-sm relative perspective-1000">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16 relative z-10">
-          <h2 className="text-4xl font-bold text-white mb-4">
+        <div className="text-center mb-16 relative z-10 transform hover:translateZ-4 transition-transform duration-300">
+          <h2 className="text-4xl font-bold text-white mb-4 holographic">
             Comprehensive AI Services
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
@@ -117,28 +117,32 @@ const Services = () => {
         </div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10 transform-style-3d">
           {services.map((service, index) => {
             const IconComponent = service.icon;
             return (
               <div
                 key={index}
-                className="bg-black border border-gray-700 rounded-xl shadow-lg hover:shadow-xl hover:shadow-cyan-400/20 transition-all duration-300 transform hover:-translate-y-2 overflow-hidden group"
+                className="bg-black border border-gray-700 rounded-xl shadow-3d hover:shadow-xl hover:shadow-cyan-400/20 transition-all duration-500 transform hover:-translate-y-4 hover:rotateY-5 hover:rotateX-2 hover:translateZ-8 overflow-hidden group"
+                style={{
+                  transformStyle: 'preserve-3d',
+                  animationDelay: `${index * 0.1}s`
+                }}
               >
                 {/* Header */}
-                <div className={`bg-gradient-to-r ${getColorClasses(service.color)} p-6 text-white`}>
-                  <IconComponent className="h-12 w-12 mb-4" />
-                  <h3 className="text-xl font-bold mb-2">{service.title}</h3>
+                <div className={`bg-gradient-to-r ${getColorClasses(service.color)} p-6 text-white transform hover:translateZ-2 transition-transform duration-300`}>
+                  <IconComponent className="h-12 w-12 mb-4 transform hover:rotateY-180 hover:scale-110 transition-transform duration-500" />
+                  <h3 className="text-xl font-bold mb-2 transform hover:translateZ-1 transition-transform duration-300">{service.title}</h3>
                 </div>
 
                 {/* Content */}
-                <div className="p-6">
-                  <p className="text-gray-300 mb-6">{service.description}</p>
+                <div className="p-6 transform hover:translateZ-1 transition-transform duration-300">
+                  <p className="text-gray-300 mb-6 transform hover:translateZ-1 transition-transform duration-300">{service.description}</p>
                   
                   {/* Features */}
-                  <ul className="space-y-3 mb-6">
+                  <ul className="space-y-3 mb-6 transform hover:translateZ-1 transition-transform duration-300">
                     {service.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center space-x-3">
+                      <li key={featureIndex} className="flex items-center space-x-3 transform hover:translateX-2 hover:translateZ-1 transition-transform duration-300">
                         <CheckCircle className="h-5 w-5 text-cyan-400 flex-shrink-0" />
                         <span className="text-gray-300">{feature}</span>
                       </li>
@@ -148,7 +152,7 @@ const Services = () => {
                   {/* CTA */}
                   <button
                     onClick={openWhatsApp}
-                    className="w-full bg-gray-800 hover:bg-gray-700 text-gray-200 py-3 px-4 rounded-lg font-semibold flex items-center justify-center space-x-2 transition-colors duration-200 group-hover:bg-cyan-500 group-hover:text-black"
+                    className="w-full bg-gray-800 hover:bg-gray-700 text-gray-200 py-3 px-4 rounded-lg font-semibold flex items-center justify-center space-x-2 transition-all duration-300 group-hover:bg-cyan-500 group-hover:text-black transform hover:translateZ-2 hover:scale-105"
                   >
                     <span>Get Started</span>
                     <ArrowRight className="h-4 w-4" />
@@ -160,17 +164,17 @@ const Services = () => {
         </div>
 
         {/* Bottom CTA */}
-        <div className="text-center mt-16 relative z-10">
-          <div className="bg-black border border-gray-700 rounded-2xl shadow-lg p-8 max-w-4xl mx-auto">
-            <h3 className="text-2xl font-bold text-white mb-4">
+        <div className="text-center mt-16 relative z-10 transform hover:translateZ-4 transition-transform duration-300">
+          <div className="bg-black border border-gray-700 rounded-2xl shadow-3d p-8 max-w-4xl mx-auto transform hover:rotateY-2 hover:rotateX-1 hover:translateZ-6 transition-transform duration-500">
+            <h3 className="text-2xl font-bold text-white mb-4 holographic">
               Ready to Transform Your Business?
             </h3>
-            <p className="text-gray-300 mb-6">
+            <p className="text-gray-300 mb-6 transform hover:translateZ-2 transition-transform duration-300">
               Let's discuss how AI can solve your specific challenges and drive growth.
             </p>
             <button
               onClick={openWhatsApp}
-              className="bg-cyan-500 hover:bg-cyan-600 text-black px-8 py-4 rounded-lg font-semibold inline-flex items-center space-x-2 transition-colors duration-200"
+              className="bg-cyan-500 hover:bg-cyan-600 text-black px-8 py-4 rounded-lg font-semibold inline-flex items-center space-x-2 transition-all duration-300 transform hover:scale-110 hover:rotateX-5 hover:translateZ-4 glow-cyan"
             >
               <MessageSquare className="h-5 w-5" />
               <span>Schedule Free Consultation</span>
